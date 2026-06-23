@@ -40,3 +40,4 @@ export async function handleAuthProxy(request: NextRequest) {
   }
   return NextResponse.next();
 }
+// proxy done
