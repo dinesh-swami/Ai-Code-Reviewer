@@ -6,3 +6,4 @@ const nextConfig: NextConfig = {
 
 export default nextConfig;
 // add some new things
+// add some new things
