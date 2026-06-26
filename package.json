@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "tunnel": "ngrok http 3000",
     "db:generate": "npx prisma generate",
     "db:migrate": "npx prisma migrate dev",
     "db:push": "npx prisma db push",
