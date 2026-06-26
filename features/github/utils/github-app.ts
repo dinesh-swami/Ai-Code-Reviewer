@@ -1,5 +1,4 @@
 import { App } from "octokit";
-import { FunnelChart } from "recharts";
 
 let githubApp: App | null = null;
 

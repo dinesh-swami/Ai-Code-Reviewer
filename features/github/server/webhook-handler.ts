@@ -44,13 +44,13 @@ export async function handleGithubWebhook(request: Request) {
   }
 
   const event = JSON.parse(payload) as PullRequestWebhookPayload;
-
-  console.log("event :", event);
+  console.log(event);
 
   if (!REVIEWABLE_ACTIONS.includes(event.action)) {
     return Response.json({ received: true });
   }
-  const pullRequest = await savePullRequest(event);
+
+  await savePullRequest(event);
 
   //   todo: Map GitHub's installation id
 
