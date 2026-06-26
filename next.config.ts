@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ["https://uneven-tree-empathic.ngrok-free.dev"],
+  allowedDevOrigins: ["uneven-tree-empathic.ngrok-free.dev"],
 };
 
 export default nextConfig;
