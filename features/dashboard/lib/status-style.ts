@@ -30,11 +30,11 @@ export const statusButtonClass = {
  */
 export function statusBadge(
   tone: keyof typeof statusBadgeClass,
-  className?: string,
+  className?: string
 ) {
   return cn(
     "inline-flex items-center rounded-none border px-2 py-0.5 text-xs font-medium capitalize",
     statusBadgeClass[tone],
-    className,
+    className
   );
 }

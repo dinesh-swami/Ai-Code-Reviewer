@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SIGN_IN_PATH } from "../utils";
 import { CaretCircleUpIcon, SignOutIcon } from "@phosphor-icons/react";
+
 const DEFAULT_PLAN = "Free";
 
 export type UserMenuUser = {
@@ -24,7 +25,8 @@ export type UserMenuUser = {
   image?: string | null;
 };
 
-export type UserMenuTriggerVariant = "compact" | "profile";
+
+export type UserMenuTriggerVariant = "compact" | "profile"
 
 type UserMenuProps = {
   user: UserMenuUser;
@@ -66,6 +68,7 @@ function UserAvatar({
   );
 }
 
+
 export function UserMenu({
   user,
   variant = "profile",
@@ -87,35 +90,34 @@ export function UserMenu({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        {variant === "compact" ? (
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn("rounded-full", className)}
-            aria-label="Open account menu"
-          >
-            <UserAvatar
-              user={user}
-              size="default"
+      <DropdownMenuTrigger
+        className={cn(className)}
+        render={
+          variant === "compact" ? (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full"
+              aria-label="Open account menu"
             />
-          </Button>
-        ) : (
-          <Button
-            variant="ghost"
-            className={cn("h-9 gap-2 px-2", className)}
-            aria-label="Open account menu"
-          >
-            <UserAvatar
-              user={user}
-              size="sm"
+          ) : (
+            <Button
+              variant="ghost"
+              className="h-9 gap-2 px-2"
+              aria-label="Open account menu"
             />
+          )
+        }
+      >
+        <UserAvatar user={user} size={variant === "compact" ? "default" : "sm"} />
+        {variant === "profile" ? (
+          <>
             <span className="max-w-32 truncate text-left text-xs font-medium">
               {displayName}
             </span>
-            <CaretCircleUpIcon className="size-4 text-muted-foreground" />
-          </Button>
-        )}
+            <CaretCircleUpIcon  className="size-4 text-muted-foreground" />
+          </>
+        ) : null}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuGroup>
@@ -139,7 +141,7 @@ export function UserMenu({
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem variant="destructive" onClick={handleSignOut}>
-            <SignOutIcon />
+            <SignOutIcon  />
             Log out
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -149,6 +151,7 @@ export function UserMenu({
 }
 
 type UserMenuWithSessionProps = Omit<UserMenuProps, "user">;
+
 
 export function UserMenuWithSession(props: UserMenuWithSessionProps) {
   const { data: session, isPending } = authClient.useSession();

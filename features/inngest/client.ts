@@ -1,4 +1,4 @@
-// src/inngest/client.ts
+
 import { Inngest } from "inngest";
 
-export const inngest = new Inngest({ id: "code-labs-ai" });
+export const inngest = new Inngest({ id: "chaicode-pr-reviewer" });

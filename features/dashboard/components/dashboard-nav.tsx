@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutIcon, GitBranch, GithubLogo, Gear } from "@phosphor-icons/react";
+import {
+  LayoutIcon ,
+  GitBranch,
+  GithubLogo,
+  Gear,
+} from "@phosphor-icons/react";
 
 import {
   DASHBOARD_NAV_ITEMS,
@@ -18,7 +23,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const NAV_ICONS = {
-  "layout-dashboard": LayoutIcon,
+  "layout-dashboard": LayoutIcon ,
   "folder-git-2": GitBranch,
   github: GithubLogo,
   settings: Gear,
@@ -45,12 +50,16 @@ export function DashboardNav() {
 
             return (
               <SidebarMenuItem key={item.href}>
-                <SidebarMenuButton isActive={active} tooltip={item.title}>
-                  <Link href={item.href}>
-                    <Icon />
-                    <span>{item.title}</span>
-                  </Link>
-                </SidebarMenuButton>
+                <SidebarMenuButton
+                  isActive={active}
+                  tooltip={item.title}
+                  render={
+                    <Link href={item.href}>
+                      <Icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  }
+                />
               </SidebarMenuItem>
             );
           })}

@@ -1,6 +1,6 @@
-'use client'
-import { Spinner } from "@/components/ui/spinner";
+"use client";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import { useFormStatus } from "react-dom";
 import { signInWithGithub } from "../actions";
 
@@ -12,31 +12,37 @@ export function GitHubIcon() {
   );
 }
 
-export function SubmitButton() {
+function SubmitButton() {
   const { pending } = useFormStatus();
 
-  let buttonLabel = "Continue with Github";
+  let buttonLabel = "Continue with GitHub";
   let buttonIcon = <GitHubIcon />;
 
   if (pending) {
-    buttonLabel = "Redirectding to Github...";
+    buttonLabel = "Redirecting to GitHub…";
     buttonIcon = <Spinner className="size-4" />;
   }
 
   return (
-    <Button type="submit" className={"w-full"} size={"lg"} disabled={pending}>
+    <Button
+      type="submit"
+      className={"w-full"}
+      size={"lg"}
+      disabled={pending}
+    >
       {buttonIcon}
       {buttonLabel}
     </Button>
-  );
+  )
 }
 
-type GithubSingInFormProps = {
-  // post login optional ha abhi
+
+type GithubSignInFormProps = {
+  /** Optional post-login redirect path (e.g. GitHub install callback). */
   callbackUrl?: string;
 };
 
-export function GithubSignInForm({ callbackUrl }: GithubSingInFormProps) {
+export function GithubSignInForm({ callbackUrl }: GithubSignInFormProps) {
   return (
     <form action={signInWithGithub} className="w-full">
       {callbackUrl ? (
@@ -44,5 +50,5 @@ export function GithubSignInForm({ callbackUrl }: GithubSingInFormProps) {
       ) : null}
       <SubmitButton />
     </form>
-  );
+  )
 }
